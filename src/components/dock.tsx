@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { FiGlobe, FiMail } from "react-icons/fi";
+import { FiBookOpen, FiGlobe, FiMail } from "react-icons/fi";
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +12,13 @@ import {
 } from "@/components/ui/tooltip";
 import { profile } from "@/lib/data";
 
-const items = [
+const items: {
+  label: string;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  internal?: boolean;
+}[] = [
+  { label: "Blog", href: "/blog", icon: FiBookOpen, internal: true },
   { label: "GitHub", href: profile.links.github, icon: FaGithub },
   { label: "LinkedIn", href: profile.links.linkedin, icon: FaLinkedinIn },
   { label: "X", href: profile.links.x, icon: FaXTwitter },
@@ -29,19 +36,29 @@ export function Dock() {
 
         <TooltipProvider delayDuration={0}>
           <div className="dock-container relative z-10">
-            {items.map(({ label, href, icon: Icon }) => (
+            {items.map(({ label, href, icon: Icon, internal }) => (
               <div key={label} className="dock-item">
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <a
-                      href={href}
-                      target={href.startsWith("mailto:") ? undefined : "_blank"}
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="dock-icon flex items-center justify-center"
-                    >
-                      <Icon className="text-[1.1rem] md:text-[1.35rem]" />
-                    </a>
+                    {internal ? (
+                      <Link
+                        href={href}
+                        aria-label={label}
+                        className="dock-icon flex items-center justify-center"
+                      >
+                        <Icon className="text-[1.1rem] md:text-[1.35rem]" />
+                      </Link>
+                    ) : (
+                      <a
+                        href={href}
+                        target={href.startsWith("mailto:") ? undefined : "_blank"}
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="dock-icon flex items-center justify-center"
+                      >
+                        <Icon className="text-[1.1rem] md:text-[1.35rem]" />
+                      </a>
+                    )}
                   </TooltipTrigger>
                   <TooltipContent
                     side="top"

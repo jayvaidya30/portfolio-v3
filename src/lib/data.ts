@@ -90,7 +90,7 @@ export const skillGroups: { label: string; items: string }[] = [
   { label: "Languages", items: "TypeScript, JavaScript, Python, C, C++, Java, SQL" },
   { label: "Frontend", items: "React, Next.js, TailwindCSS, Ant Design, TanStack Query, Zustand, Shadcn/ui, Canvas API" },
   { label: "Backend", items: "Node.js, Express.js, Hono, FastAPI, REST APIs, WebSockets, JWT, Firebase Auth" },
-  { label: "AI / LLM", items: "OpenAI API, Gemini API, Claude API, Prompt Engineering, Agentic AI, LLM Evaluation, Vector Databases" },
+  { label: "AI / LLM", items: "Prompt Engineering, Agentic AI, LLM Evaluation, Vector Databases" },
   { label: "Databases", items: "PostgreSQL, MongoDB, Prisma, Mongoose" },
   { label: "Cloud / DevOps", items: "AWS (EC2, S3, IVS), Docker, Nginx, CI/CD, Linux, Vercel" },
   { label: "Tools", items: "Git, GitHub, Jest, Postman, Turborepo, Figma, VS Code" },
@@ -116,3 +116,58 @@ export const education = {
   detail: "CGPA: 9.27",
   period: "Aug 2024 — May 2027",
 };
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime: string;
+  tags: string[];
+  content: string[];
+};
+
+export const posts: BlogPost[] = [
+  {
+    slug: "dockerized-nextjs-on-ec2",
+    title: "Dockerizing Next.js for EC2 with Nginx",
+    excerpt:
+      "How I containerize Next.js services and ship them to EC2 behind Nginx with zero-downtime deploys.",
+    date: "Jul 12, 2026",
+    readingTime: "6 min read",
+    tags: ["Next.js", "Docker", "AWS", "Nginx"],
+    content: [
+      "Shipping Next.js to EC2 reliably comes down to **small images, explicit env handling, and a sane Nginx front**. I build a standalone-output image, run it as a non-root user, and keep runtime config in environment variables — never baked into the image.",
+      "Nginx terminates TLS, gzips static assets, and reverse-proxies to the container on localhost. Health checks hit **/api/health**, and deploys are **pull → rebuild → restart → prune**, which keeps rollbacks to one command.",
+      "The wins that mattered most in production were **standalone output cutting image size**, **multi-stage builds caching node_modules**, and **centralized logs** so a bad deploy shows up in seconds, not after users report it.",
+    ],
+  },
+  {
+    slug: "cutting-api-latency-40-percent",
+    title: "How I Cut Backend Response Times by ~40%",
+    excerpt:
+      "Query fixes, response shaping, and caching — the practical order I follow to make APIs fast.",
+    date: "Jun 28, 2026",
+    readingTime: "8 min read",
+    tags: ["Node.js", "PostgreSQL", "Performance"],
+    content: [
+      "Most slow endpoints I see are **N+1 queries or over-fetching**, not slow frameworks. I start by logging per-query time, then fix the data access first: select only needed columns, batch with joins, and add the **one missing index** that usually explains 80% of the pain.",
+      "Next is response shaping — **paginate lists, compress images at upload**, and avoid sending 10–15 MB payloads to the client. On one storefront this alone took image payloads to **under 500 KB**.",
+      "Only then do I add caching: short-TTL caches for hot reads, **rate limiting** to protect the origin, and rendering fixes on the frontend. Measure before and after each step, or you are guessing.",
+    ],
+  },
+  {
+    slug: "realtime-canvas-under-100ms",
+    title: "Sub-100ms Realtime Canvas Sync with WebSockets",
+    excerpt:
+      "Lessons from building Drawly — batching strokes, reconciling state, and persisting canvases.",
+    date: "Jun 10, 2026",
+    readingTime: "5 min read",
+    tags: ["WebSockets", "Canvas API", "TypeScript"],
+    content: [
+      "Realtime drawing feels instant only if you **render locally first, then sync**. I batch pointer events per frame, send deltas over WebSockets, and reconcile with server sequence numbers so late packets do not tear the canvas.",
+      "Auth stays out of the hot path: **JWT on connect**, then lightweight room checks per message. Canvas state persists to **PostgreSQL** as compact operations, not full snapshots, which keeps reconnects cheap.",
+      "A Turborepo with **shared types between client and server** caught most protocol bugs at compile time. The rule I keep: the network is lossy, the local canvas is truth until the server confirms.",
+    ],
+  },
+];

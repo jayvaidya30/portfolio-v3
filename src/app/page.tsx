@@ -1,12 +1,16 @@
+import Link from "next/link";
 import { Clock } from "@/components/clock";
 import { Dock } from "@/components/dock";
 import { SceneBackground } from "@/components/scene-background";
-import { EducationSection } from "@/components/sections/education";
-import { ExperienceSection } from "@/components/sections/experience";
 import { Intro } from "@/components/sections/intro";
-import { ProjectsSection } from "@/components/sections/projects";
-import { SiteFooter } from "@/components/sections/site-footer";
-import { SkillsSection } from "@/components/sections/skills";
+
+const navLinks = [
+  { label: "projects", href: "/projects" },
+  { label: "experience", href: "/experience" },
+  { label: "skills", href: "/skills" },
+  { label: "blog", href: "/blog" },
+  { label: "education", href: "/education" },
+];
 
 export default function Home() {
   return (
@@ -14,13 +18,20 @@ export default function Home() {
       <SceneBackground />
       <Clock />
 
-      <main className="screen relative z-10 flex flex-col gap-14">
+      <main className="screen relative z-10 flex flex-col gap-10">
         <Intro />
-        <ExperienceSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <EducationSection />
-        <SiteFooter />
+
+        <nav className="flex flex-wrap items-center gap-x-7 gap-y-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="text-base font-bold text-cream/60 transition-colors hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </main>
 
       <Dock />
