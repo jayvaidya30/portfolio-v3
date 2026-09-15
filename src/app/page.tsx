@@ -9,7 +9,7 @@ const navLinks = [
   { label: "experience", href: "/experience" },
   { label: "skills", href: "/skills" },
   { label: "blog", href: "/blog" },
-  { label: "education", href: "/education" },
+  { label: "hackathons", href: "/hackathons" },
 ];
 
 export default function Home() {

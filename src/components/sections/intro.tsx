@@ -38,7 +38,6 @@ export function Intro() {
 
       <Reveal delay={0.15} onMount>
         <section className="flex flex-col gap-0.5">
-          <h2 className="text-base font-bold text-cream md:text-lg">Hello There!</h2>
           <div className="mt-2 flex flex-col gap-3 text-sm font-semibold text-cream md:gap-4 md:text-base">
             <p>
               I&apos;m Jay — a full stack &amp; DevOps engineer focused on building

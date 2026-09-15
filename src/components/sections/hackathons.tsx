@@ -2,9 +2,28 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/rich-text";
 import { education, hackathons } from "@/lib/data";
 
-export function EducationSection() {
+export function HackathonsSection() {
   return (
     <section className="flex flex-col gap-6">
+      <Reveal>
+        <SectionHeading>Hackathons</SectionHeading>
+      </Reveal>
+
+      <div className="flex flex-col gap-5">
+        {hackathons.map((hackathon) => (
+          <Reveal key={hackathon.name}>
+            <article className="flex flex-col">
+              <h3 className="text-sm font-bold text-white md:text-base">
+                {hackathon.name}
+              </h3>
+              <p className="mt-1 text-sm font-semibold text-cream/85 md:text-base">
+                {hackathon.detail}
+              </p>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+
       <Reveal>
         <SectionHeading>Education</SectionHeading>
       </Reveal>
@@ -27,25 +46,6 @@ export function EducationSection() {
           </p>
         </article>
       </Reveal>
-
-      <Reveal>
-        <SectionHeading>Hackathons</SectionHeading>
-      </Reveal>
-
-      <div className="flex flex-col gap-5">
-        {hackathons.map((hackathon) => (
-          <Reveal key={hackathon.name}>
-            <article className="flex flex-col">
-              <h3 className="text-sm font-bold text-white md:text-base">
-                {hackathon.name}
-              </h3>
-              <p className="mt-1 text-sm font-semibold text-cream/85 md:text-base">
-                {hackathon.detail}
-              </p>
-            </article>
-          </Reveal>
-        ))}
-      </div>
     </section>
   );
 }

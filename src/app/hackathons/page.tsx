@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 import { SubPage } from "@/components/sub-page";
-import { EducationSection } from "@/components/sections/education";
+import { HackathonsSection } from "@/components/sections/hackathons";
 
 export const metadata: Metadata = {
-  title: "Education — Jay Vaidya",
+  title: "Hackathons — Jay Vaidya",
   description:
-    "Education and hackathons — BCS at Savitribai Phule Pune University, RIFT'26, and Gemini 3 / Google DeepMind.",
+    "Hackathons and education — RIFT'26, Gemini 3 / Google DeepMind, and BCS at Savitribai Phule Pune University.",
 };
 
-export default function EducationPage() {
+export default function HackathonsPage() {
   return (
     <SubPage
-      title="Education"
-      description="What I'm studying and what I've hacked on."
+      title="Hackathons"
+      description="What I've hacked on and what I'm studying."
     >
-      <EducationSection />
+      <HackathonsSection />
     </SubPage>
   );
 }
