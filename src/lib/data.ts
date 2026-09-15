@@ -6,6 +6,7 @@ export const profile = {
   links: {
     github: "https://github.com/jayvaidya30",
     linkedin: "https://linkedin.com/in/jayvaidya30",
+    x: "https://x.com/jayvaidya30",
     website: "https://jayvaidya.site",
   },
 };

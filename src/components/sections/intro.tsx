@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "@/components/reveal";
 import { ExternalLink, InlineChip } from "@/components/rich-text";
 import { profile } from "@/lib/data";
@@ -19,6 +20,14 @@ export function Intro() {
       <Reveal onMount>
         <section>
           <div className="flex flex-col gap-1.5 md:gap-2">
+            <Image
+              src="/profile.webp"
+              alt={profile.name}
+              width={96}
+              height={96}
+              priority
+              className="mb-2 h-20 w-20 rounded-2xl border border-cream/20 object-cover md:h-24 md:w-24"
+            />
             <h1 className="head-name">{profile.name}</h1>
             <p className="text-sm font-semibold text-cream md:text-base">
               {profile.tagline}

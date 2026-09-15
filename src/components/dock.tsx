@@ -1,6 +1,7 @@
 "use client";
 
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { FiGlobe, FiMail } from "react-icons/fi";
 import {
   Tooltip,
@@ -13,6 +14,7 @@ import { profile } from "@/lib/data";
 const items = [
   { label: "GitHub", href: profile.links.github, icon: FaGithub },
   { label: "LinkedIn", href: profile.links.linkedin, icon: FaLinkedinIn },
+  { label: "X", href: profile.links.x, icon: FaXTwitter },
   { label: "Website", href: profile.links.website, icon: FiGlobe },
   { label: "Email", href: `mailto:${profile.email}`, icon: FiMail },
 ];
