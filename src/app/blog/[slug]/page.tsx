@@ -19,11 +19,11 @@ export async function generateMetadata(
   const post = posts.find((p) => p.slug === slug);
 
   if (!post) {
-    return { title: "Post not found — Jay Vaidya" };
+    return { title: "Post not found | Jay Vaidya" };
   }
 
   return {
-    title: `${post.title} — Jay Vaidya`,
+    title: `${post.title} | Jay Vaidya`,
     description: post.excerpt,
   };
 }
@@ -67,9 +67,11 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
           <p className="text-xs font-medium text-cream/60 md:text-sm">
             {post.date} · {post.readingTime}
           </p>
-          <p className="text-sm font-semibold text-cream/85 md:text-base">
-            {post.excerpt}
-          </p>
+          {post.excerpt ? (
+            <p className="text-sm font-semibold text-cream/85 md:text-base">
+              {post.excerpt}
+            </p>
+          ) : null}
           <p className="text-[0.7rem] font-medium tracking-wide text-cream/55 md:text-xs">
             {post.tags.join(" · ")}
           </p>

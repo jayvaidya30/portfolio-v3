@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,7 +6,6 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-geist-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -141,12 +138,18 @@
 html {
   background-color: #0b1016;
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
   background-color: #0b1016;
   color: var(--cream);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -166,6 +169,16 @@ body {
 @media (min-width: 768px) {
   .screen {
     padding: 8rem 1.5rem 7rem;
+  }
+}
+
+.screen-hero {
+  padding-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .screen-hero {
+    padding-top: 4rem;
   }
 }
 
@@ -226,7 +239,66 @@ body {
   filter: drop-shadow(0 4px 8px rgb(0 0 0 / 0.2));
 }
 
+.dock-tip {
+  position: relative;
+}
+
+.dock-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 0.625rem);
+  left: 50%;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  border: 1px solid #374151;
+  background-color: #1f2937;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  color: #fff;
+  transform: translateX(-50%) translateY(0.25rem) scale(0.8);
+  transform-origin: bottom center;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.dock-tip:hover::after,
+.dock-tip:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(0.8);
+}
+
 /* ---------- Scene animations ---------- */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal-mount {
+  animation: reveal-up 0.5s ease-out both;
+}
+
+.reveal-view {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+
+.reveal-view[data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
 @keyframes drift {
   from {
     transform: translate3d(-6%, 0, 0);
@@ -272,6 +344,12 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal-mount {
+    animation: none;
+  }
+  .reveal-view {
+    transition: none;
+  }
   .animate-drift,
   .animate-drift-slow,
   .animate-shimmer,

@@ -3,9 +3,9 @@ import { SubPage } from "@/components/sub-page";
 import { ExperienceSection } from "@/components/sections/experience";
 
 export const metadata: Metadata = {
-  title: "Experience — Jay Vaidya",
+  title: "Experience | Jay Vaidya",
   description:
-    "Work experience of Jay Vaidya — full stack engineering at Kharedo.",
+    "Work experience of Jay Vaidya, full stack engineering at Kharedo.",
 };
 
 export default function ExperiencePage() {

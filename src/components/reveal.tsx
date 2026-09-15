@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 
 export function Reveal({
@@ -14,19 +14,48 @@ export function Reveal({
   className?: string;
   onMount?: boolean;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    if (onMount) return;
+
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -40px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [onMount]);
+
+  if (onMount) {
+    return (
+      <div
+        className={["reveal-mount", className].filter(Boolean).join(" ")}
+        style={{ animationDelay: `${delay}s` }}
+      >
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      {...(onMount
-        ? { animate: { opacity: 1, y: 0 } }
-        : {
-            whileInView: { opacity: 1, y: 0 },
-            viewport: { once: true, margin: "-40px" },
-          })}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      className={className}
+    <div
+      ref={ref}
+      data-shown={shown ? "" : undefined}
+      className={["reveal-view", className].filter(Boolean).join(" ")}
+      style={{ transitionDelay: `${delay}s` }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

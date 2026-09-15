@@ -3,9 +3,9 @@ import { SubPage } from "@/components/sub-page";
 import { HackathonsSection } from "@/components/sections/hackathons";
 
 export const metadata: Metadata = {
-  title: "Hackathons — Jay Vaidya",
+  title: "Hackathons | Jay Vaidya",
   description:
-    "Hackathons and education — RIFT'26, Gemini 3 / Google DeepMind, and BCS at Savitribai Phule Pune University.",
+    "Hackathons and education: RIFT'26, Gemini 3 / Google DeepMind, and BCS at Savitribai Phule Pune University.",
 };
 
 export default function HackathonsPage() {

@@ -28,7 +28,7 @@ export function Clock() {
         rel="noopener noreferrer"
         className="flex items-center gap-2 font-semibold text-cream transition-all duration-100 hover:opacity-80"
       >
-        <span className="text-base md:text-sm">{time ?? "—"}</span>
+        <span className="text-base md:text-sm">{time ?? "-"}</span>
       </a>
     </section>
   );

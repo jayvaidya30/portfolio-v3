@@ -3,9 +3,9 @@ import { SubPage } from "@/components/sub-page";
 import { SkillsSection } from "@/components/sections/skills";
 
 export const metadata: Metadata = {
-  title: "Skills — Jay Vaidya",
+  title: "Skills | Jay Vaidya",
   description:
-    "Languages, frameworks, and tools Jay Vaidya works with — TypeScript, React, Next.js, Node.js, AWS, Docker, and more.",
+    "Languages, frameworks, and tools Jay Vaidya works with: TypeScript, React, Next.js, Node.js, AWS, Docker, and more.",
 };
 
 export default function SkillsPage() {

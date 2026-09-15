@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/rich-text";
 import { posts } from "@/lib/data";
@@ -30,23 +30,19 @@ export function BlogSection({ preview = true }: { preview?: boolean }) {
               </span>
             </div>
 
-            <p className="mt-1.5 text-sm font-semibold text-cream/85 md:text-base">
-              {post.excerpt}
-            </p>
+            {post.excerpt ? (
+              <p className="mt-1.5 text-sm font-semibold text-cream/85 md:text-base">
+                {post.excerpt}
+              </p>
+            ) : null}
 
-            <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-              <span className="text-[0.7rem] font-medium tracking-wide text-cream/55 md:text-xs">
-                {post.tags.join(" · ")}
-              </span>
-              <Link
-                href={`/blog/${post.slug}`}
-                aria-label={`Read ${post.title}`}
-                className="inline-flex items-center gap-1 text-xs font-bold text-cream/70 transition-colors hover:text-white md:text-sm"
-              >
-                Read
-                <FiArrowUpRight className="text-sm" />
-              </Link>
-            </div>
+            {post.tags.length > 0 ? (
+              <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                <span className="text-[0.7rem] font-medium tracking-wide text-cream/55 md:text-xs">
+                  {post.tags.join(" · ")}
+                </span>
+              </div>
+            ) : null}
           </article>
         </Reveal>
       ))}

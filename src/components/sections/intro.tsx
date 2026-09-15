@@ -40,7 +40,7 @@ export function Intro() {
         <section className="flex flex-col gap-0.5">
           <div className="mt-2 flex flex-col gap-3 text-sm font-semibold text-cream md:gap-4 md:text-base">
             <p>
-              I&apos;m Jay — a full stack &amp; DevOps engineer focused on building
+              I&apos;m Jay, a full stack &amp; DevOps engineer focused on building
               products that stay fast, stable, and maintainable in production.
             </p>
             <p>
@@ -53,16 +53,16 @@ export function Intro() {
               platform across <strong className="font-semibold text-white">20+ business modules</strong>{" "}
               and optimizing core workflows to be{" "}
               <strong className="font-semibold text-white">~40% faster on the backend</strong> and{" "}
-              <strong className="font-semibold text-white">17–62% faster on the frontend</strong>.
+              <strong className="font-semibold text-white">17-62% faster on the frontend</strong>.
             </p>
             <p>
               I&apos;ve built across real-time collaboration (
-              <ExternalLink href="https://github.com/jayvaidya30">
+              <ExternalLink href="https://github.com/jayvaidya30/drawly">
                 <InlineChip letter="D" gradient={chips.drawly} />
                 Drawly
               </ExternalLink>
               ), fraud detection (
-              <ExternalLink href="https://github.com/jayvaidya30">
+              <ExternalLink href="https://github.com/jayvaidya30/fraud-ex-stable">
                 <InlineChip letter="F" gradient={chips.fraudEx} />
                 FraudEx
               </ExternalLink>
@@ -71,21 +71,21 @@ export function Intro() {
                 <InlineChip letter="A" gradient={chips.assetFlow} />
                 AssetFlow
               </ExternalLink>
-              ) — where I learned how quickly software evolves, breaks, and improves
+              ), where I learned how quickly software evolves, breaks, and improves
               once it meets real users.
             </p>
             <p>
-              I also compete in hackathons —{" "}
-              <ExternalLink href="https://github.com/jayvaidya30">
+              I also compete in hackathons like{" "}
+              <ExternalLink href="https://github.com/BShubhamxx/pw-hack-money">
                 <InlineChip letter="R" gradient={chips.rift} />
                 RIFT&apos;26
               </ExternalLink>{" "}
               and{" "}
-              <ExternalLink href="https://github.com/jayvaidya30">
+              <ExternalLink href="https://gemini3.devpost.com">
                 <InlineChip letter="G" gradient={chips.gemini} />
                 Gemini 3 / Google DeepMind
-              </ExternalLink>{" "}
-              — and I&apos;m pursuing a BCS at Savitribai Phule Pune University with a{" "}
+              </ExternalLink>
+              , and I&apos;m pursuing a BCS at Savitribai Phule Pune University with a{" "}
               <strong className="font-semibold text-white">9.27 CGPA</strong>.
             </p>
             <p>

@@ -15,18 +15,20 @@ export function ProjectsSection() {
           <article className="flex flex-col">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
               <h3 className="flex items-center gap-1 text-base font-bold text-white md:text-lg">
-                {project.name}
                 {project.link ? (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`${project.name} live site`}
-                    className="text-cream/60 transition-colors hover:text-white"
+                    aria-label={`${project.name} link`}
+                    className="inline-flex items-center gap-1 transition-colors hover:text-cream"
                   >
-                    <FiArrowUpRight className="text-sm md:text-base" />
+                    {project.name}
+                    <FiArrowUpRight className="text-sm text-cream/60 md:text-base" />
                   </a>
-                ) : null}
+                ) : (
+                  project.name
+                )}
               </h3>
               <span className="text-[0.7rem] font-medium tracking-wide text-cream/55 md:text-xs">
                 {project.stack}

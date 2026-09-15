@@ -1,11 +1,17 @@
+import Image from "next/image";
+
 export function SceneBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 select-none overflow-hidden bg-[#0b1016]">
-      <img
+      <Image
         src="/bg-1.jpg"
         alt=""
         aria-hidden
-        className="absolute inset-0 h-full w-full object-cover"
+        fill
+        preload
+        sizes="100vw"
+        quality={60}
+        className="object-cover"
       />
 
       {/* Readability overlays */}
